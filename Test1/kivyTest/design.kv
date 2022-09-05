@@ -1,0 +1,141 @@
+#: import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+<ElementCard@MDCard>:
+    radius: '10dp'
+    spacing: '10dp'
+    padding: '10dp'
+    image: ''
+    text: ''
+    sub_text: ''
+    orientation: 'vertical'
+    ripple_behavior: True
+    on_release:
+        app.root.transition = RiseInTransition()
+    image: root.image
+        halign: 'center'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: root.text
+            halign: 'center'
+        MDLabel:
+            text: root.sub_text
+            halign: 'center'
+
+<CustomizeScreen@MDBoxLayout>:
+    orientation: 'vertical'
+    text: ''
+    padding: 100
+    MDLabel:
+        text: root.text
+        halign: 'center'
+        pos_hint: {'center_x': .5}
+    MDFillRoundFlatButton:
+        text: 'Regresar'
+        pos_hint: {'center_x': .5}
+        on_release:
+            app.root.current = 'screen_principal'
+            app.root.transition = SlideTransition(direction = 'left')
+
+<ui>:
+    MDScreen:
+        name: 'screen_principal'
+        md_bg_color: 0,.5,.5, 1
+        MDBoxLayout:
+            orientation: 'vertical'            
+            MDBoxLayout:
+                size_hint: 1, 0.2
+                orientation: 'horizontal'                
+                padding: '10dp'
+                MDCard:
+                    radius:'10dp'
+                    padding: '10dp'
+                    line_color: 1,0,1,1
+
+                    MDLabel:
+                        text: "Aplicación de Salud"
+                        halign: 'center'
+                        pos_hint: {'center_y': 0.5}
+                    MDSwitch:
+                        pos_hint: {'center_y': 0.5}
+                        on_active:
+                            app.change_style(*args)
+
+        MDGridLayout:
+            cols: 3
+            size_hint: 1, .8
+            padding: ['10dp','10dp','10dp','10dp']
+            spacing: '10dp'
+
+            ElementCard:
+                text: 'S'
+                sub_text: 'Salud'
+                image: 'images/ia.png'
+                on_release:
+                    root.current = 'screen1'
+            
+            ElementCard:
+                text: 'S'
+                sub_text: 'Salud'
+                image: 'images/ia.png'
+                on_release:
+                    root.current = 'screen2'
+
+            ElementCard:
+                text: 'S'
+                sub_text: 'Salud'
+                image: 'images/ia.png'
+                on_release:
+                    root.current = 'screen3'
+            
+            ElementCard:
+                text: 'S'
+                sub_text: 'Salud'
+                image: 'images/ia.png'
+                on_release:
+                    root.current = 'screen4'
+
+            ElementCard:
+                text: 'S'
+                sub_text: 'Salud'
+                image: 'images/ia.png'
+                on_release:
+                    root.current = 'screen5'
+            
+            ElementCard:
+                text: 'S'
+                sub_text: 'Salud'
+                image: 'images/ia.png'
+                on_release:
+                    root.current = 'screen6'
+
+    MDScreen:
+        name: 'screen1'
+        CustomizeScreen:
+            text: 'Pantalla Uno'
+    
+    MDScreen:
+        name: 'screen2'
+        CustomizeScreen:
+            text: 'Pantalla Dos'
+    
+    MDScreen:
+        name: 'screen3'
+        CustomizeScreen:
+            text: 'Pantalla Tres'
+
+    MDScreen:
+        name: 'screen4'
+        CustomizeScreen:
+            text: 'Pantalla Cuatro'
+
+    MDScreen:
+        name: 'screen5'
+        CustomizeScreen:
+            text: 'Pantalla Cinco'
+    
+    MDScreen:
+        name: 'screen6'
+        CustomizeScreen:
+            text: 'Pantalla Seis'
